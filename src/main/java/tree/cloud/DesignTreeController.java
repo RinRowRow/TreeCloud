@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
@@ -44,6 +45,14 @@ public class DesignTreeController {
 
         model.addAttribute("design",new Tree());
         return "design";
+    }
+
+    @PostMapping
+    public String processDesign(Tree design){
+        // Save the taco design...
+        // We'll do this in chapter 3
+        log.info("Processing design: " + design);
+        return "redirect:/orders/current";
     }
 
     private List<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
